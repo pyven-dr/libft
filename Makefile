@@ -1,4 +1,4 @@
-CFILES = ft_atoi.c \
+SRC = ft_atoi.c \
 	 ft_bzero.c \
 	 ft_isalnum.c \
 	 ft_isalpha.c \
@@ -31,46 +31,66 @@ CFILES = ft_atoi.c \
 	 ft_putchar_fd.c \
 	 ft_putstr_fd.c \
 	 ft_putendl_fd.c \
-	 ft_putnbr_fd.c
+	 ft_putnbr_fd.c \
+	 ft_lstnew_bonus.c \
+	 ft_lstadd_front_bonus.c \
+	 ft_lstsize_bonus.c \
+	 ft_lstlast_bonus.c \
+	 ft_lstadd_back_bonus.c \
+	 ft_lstdelone_bonus.c \
+	 ft_lstclear_bonus.c \
+	 ft_lstiter_bonus.c \
+	 ft_lstmap_bonus.c \
+	 ft_lstmap_bonus.c \
+	 get_next_line.c \
+	 new_vector.c \
+	 del_vector.c \
+	 add_vector.c \
+	 get_elem_vector.c \
+	 ft_strcmp.c \
+	 ft_atoi_base.c \
+	 ft_strminiminize.c \
 
-BONUS_CFILES = ft_lstnew_bonus.c \
-			   ft_lstadd_front_bonus.c \
-			   ft_lstsize_bonus.c \
-			   ft_lstlast_bonus.c \
-			   ft_lstadd_back_bonus.c \
-			   ft_lstdelone_bonus.c \
-			   ft_lstclear_bonus.c \
-			   ft_lstiter_bonus.c \
-			   ft_lstmap_bonus.c \
-			   ft_lstmap_bonus.c
+SRC_DIR = src
 
-OFILES = $(CFILES:.c=.o)
+BUILD_DIR = .build
 
-BONUS_OFILES = $(BONUS_CFILES:.c=.o)
+INCLUDE_DIR = include
+
+OBJ = $(addprefix $(BUILD_DIR)/, $(SRC:.c=.o))
+
+DEP = $(OBJ:.o=.d)
 
 CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
+DFLAGS = -MD -MP
+
+IFLAGS = \
+		 -I $(INCLUDE_DIR)
+
 NAME = libft.a
 
+.PHONY: all
 all: $(NAME)
 
-$(NAME): $(OFILES)
-	ar crs $(NAME) $(OFILES)
+$(NAME): $(OBJ)
+	ar crs $(NAME) $(OBJ)
 
-bonus : all $(BONUS_OFILES)
-	$(MAKE) $(NAME) CFILES="$(CFILES) $(BONUS_CFILES)"
+-include $(DEP)
 
-%.o: %.c libft.h
-	$(CC) $(CFLAGS) -c $< -o $@
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(BUILD_DIR)
+	$(CC) $(CFLAGS) $(DFLAGS) $(IFLAGS) -c $< -o $@
 
+.PHONY: clean
 clean:
-	rm -f $(OFILES) $(BONUS_OFILES)
+	$(RM) -r $(BUILD_DIR)
 
+.PHONY: fclean
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
+.PHONY: re
 re: fclean all
-
-.PHONY: clean fclean re all bonus
