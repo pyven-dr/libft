@@ -6,11 +6,11 @@
 /*   By: pyven-dr <pyven-dr@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:37:03 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/04/09 16:37:03 by pyven-dr         ###   ########.fr       */
+/*   Updated: 2024/04/10 15:34:02 by pyven-dr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "libft.h"
 
 int	del_elem_vector(t_vector *vector, size_t index)
 {
