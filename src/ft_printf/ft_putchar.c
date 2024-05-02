@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sabitbol <sabitbol@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pyven-dr <pyven-dr@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 04:09:18 by pyven-dr          #+#    #+#             */
-/*   Updated: 2024/04/30 00:09:02 by sabitbol         ###   ########.fr       */
+/*   Created: 2023/11/20 17:05:05 by pyven-dr          #+#    #+#             */
+/*   Updated: 2024/04/18 17:58:25 by pyven-dr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-t_list	*ft_lstnew(void *content)
+int	ft_putchar(char c, t_vector *buffer)
 {
-	t_list	*res;
-
-	res = malloc(sizeof(t_list));
-	if (!res)
-		return (NULL);
-	res->content = content;
-	res->next = NULL;
-	return (res);
+	if (add_vector(buffer, &c, NULL) == -1)
+		return (-1);
+	return (1);
 }
