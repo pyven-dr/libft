@@ -69,3 +69,7 @@
 ### Get_next_line
 
 - [`get_next_line`](src/get_next_line.c) - read a file line by line from th project [get_next_line](https://github.com/pyven-dr/get_next_line)
+
+### Ft_printf
+
+- [`ft_printf`](src/ft_printf/ft_printf.c) - Recreation of printf function from `<stdio.h>` , modified version of [ft_printf](https://github.com/pyven-dr/ft_printf)
